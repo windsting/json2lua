@@ -1,0 +1,22 @@
+{
+    "name": "json2lua",
+    "version": "0.2.0",
+    "description": "a simple tool convert json file to lua flie.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "json",
+        "convert",
+        "lua"
+    ],
+    "author": "windsting",
+    "license": "ISC",
+    "bin": {
+        "json2lua": "./index.js"
+    },
+    "dependencies": {
+        "lodash": "^4.17.4"
+    }
+}
