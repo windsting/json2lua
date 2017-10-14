@@ -6,7 +6,7 @@ A command-line utlity to convert JSON to LUA, meaning from a `.json` file to a `
 
 ## installation
 
-    > sudo npm install -g json2lua
+    > npm install -g json2lua
 
 **Note:** To use both `npm` and `json2lua`, you must have [NodeJS](https://nodejs.org/en/) installed on the machine.
 
