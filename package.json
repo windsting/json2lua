@@ -1,10 +1,14 @@
 {
     "name": "json2lua",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "a simple tool convert json file to lua flie.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/windsting/json2lua.git"
     },
     "keywords": [
         "json",
@@ -13,6 +17,10 @@
     ],
     "author": "windsting",
     "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/windsting/json2lua/issues"
+    },
+    "homepage": "https://github.com/windsting/json2lua",
     "bin": {
         "json2lua": "./index.js"
     },
