@@ -1,6 +1,6 @@
 {
     "name": "json2lua",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "a simple tool convert json file to lua flie.",
     "main": "index.js",
     "scripts": {
