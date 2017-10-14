@@ -2,6 +2,8 @@
 
 A command-line utlity to convert JSON to LUA, meaning from a `.json` file to a `.lua` file.
 
+![demo-gif](https://github.com/windsting/json2lua/raw/master/asset/json2lua-demo.gif)
+
 ## installation
 
     > sudo npm install -g json2lua
