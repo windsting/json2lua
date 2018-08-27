@@ -1,6 +1,6 @@
 {
     "name": "json2lua",
-    "version": "0.2.4",
+    "version": "0.3.0",
     "description": "a simple tool convert json file to lua flie.",
     "main": "index.js",
     "scripts": {
@@ -22,9 +22,13 @@
     },
     "homepage": "https://github.com/windsting/json2lua",
     "bin": {
-        "json2lua": "./index.js"
+        "json2lua": "bin/cli.js"
     },
     "dependencies": {
         "lodash": "^4.17.4"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "mocha": "^5.2.0"
     }
 }

@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
-var _ = require('lodash')
-var fs = require("fs");
+var lodash = require('lodash'),
+    fs = require("fs");
 
+var writeLog = false;
 
 function log(content) {
-    return;
-    console.log(content)
+    'use strict';
+    if (writeLog) {
+        console.log(content);
+    }
 }
 
 function toLua(obj) {
@@ -14,17 +17,17 @@ function toLua(obj) {
     if (obj === null || obj === undefined) {
         return "nil";
     }
-    if (!_.isObject(obj)) {
+    if (!lodash.isObject(obj)) {
         if (typeof obj === 'string') {
             return '"' + obj + '"';
         }
         return obj.toString();
     }
-    var result = "{";
-    var isArray = obj instanceof Array;
-    var len = _.size(obj);
-    var i = 0;
-    _.forEach(obj, function(v, k) {
+    var result = "{",
+        isArray = obj instanceof Array,
+        len = lodash.size(obj),
+        i = 0;
+    lodash.forEach(obj, function (v, k) {
         if (isArray) {
             result += toLua(v);
         } else {
@@ -33,36 +36,58 @@ function toLua(obj) {
         if (i < len - 1) {
             result += ",";
         }
-        ++i;
+        i += 1;
     });
     result += "}";
     return result;
 }
 
+function loadJsonString(strJson) {
+    'use strict';
+    var obj = JSON.parse(strJson);
+    return obj;
+}
+
 function loadJson(filePath) {
     'use strict';
-    var content = fs.readFileSync(filePath);
-    var obj = JSON.parse(content);
+    var content = fs.readFileSync(filePath),
+        obj = loadJsonString(content);
     log(obj);
     return obj;
 }
 
 function writeText(filePath, text) {
+    'use strict';
     log(text);
     fs.writeFileSync(filePath, text);
 }
 
-function convert(jsonPath, luaPath) {
-    var obj = loadJson(jsonPath);
-    var lua = toLua(obj);
-    writeText(luaPath, lua);
+function fromObject(obj, dstFilePath) {
+    'use strict';
+    var luaString = toLua(obj);
+    if (dstFilePath) {
+        writeText(dstFilePath, luaString);
+    }
+    return luaString;
 }
 
-var args = process.argv.slice(2);
-log(args);
-if (args.length < 2) {
-    console.log('usage: json2lua json_file_to_read lua_file_path_to_write');
-    return;
+function fromString(str, dstFilePath) {
+    'use strict';
+    var obj = loadJsonString(str),
+        luaString = fromObject(obj, dstFilePath);
+    return luaString;
 }
 
-convert(args[0], args[1]);
+function fromFile(srcFilePath, dstFilePath) {
+    'use strict';
+    var obj = loadJson(srcFilePath),
+        luaString = fromObject(obj, dstFilePath);
+    return luaString;
+}
+
+module.exports = {
+    fromFile: fromFile,
+    fromString: fromString,
+    fromObject: fromObject,
+    log: log
+};
