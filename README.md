@@ -20,7 +20,7 @@ A cli utility AND package to convert JSON to LUA, meaning from a `.json` file to
 
 1. **as package**
 
-    install it in your project folder:
+    Install it in your project folder:
 
         > npm install json2lua
 
@@ -30,6 +30,8 @@ A cli utility AND package to convert JSON to LUA, meaning from a `.json` file to
             jsonStr = `{"id":1,"name":"dog","price":200}`;
 
         console.log(json2lua.fromString(jsonStr));
+
+    The [testing file](./test/test.js) showed usages for all 3 valid method, and the parameter `dstFileName` is optional, omit it if you do not need an output file.
 
 ## Example
 
